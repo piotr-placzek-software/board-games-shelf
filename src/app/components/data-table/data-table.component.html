@@ -1,0 +1,47 @@
+<table mat-table [dataSource]="dataSource" class="app-data-table">
+  <ng-container matColumnDef="thumbnailUrl">
+    <th mat-header-cell *matHeaderCellDef>Cover</th>
+    <td mat-cell *matCellDef="let element">
+      <img *ngIf="element.thumbnailUrl" [src]="element.thumbnailUrl" />
+      <img
+        *ngIf="!element.thumbnailUrl"
+        src="assets/thumbnail-placeholder.png"
+      />
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastPlayed">
+    <th mat-header-cell *matHeaderCellDef>Last played</th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.lastPlayed">
+        {{ element.lastPlayed | date: "longDate" }}
+      </span>
+      <span *ngIf="!element.lastPlayed">
+        Never
+      </span>
+    </td>
+
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+    <div class="actions_container">
+      <button matMiniFab aria-label="Play" (click)="actionClickHandler('PLAY',element)">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button matMiniFab aria-label="Edit" (click)="actionClickHandler('EDIT', element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

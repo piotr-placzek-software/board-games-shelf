@@ -1,0 +1,9 @@
+.app {
+  &__container {
+  padding: 24px;
+    // overflow: hidden;
+    &__view {
+      // overflow-y: scroll;
+    }
+  }
+}

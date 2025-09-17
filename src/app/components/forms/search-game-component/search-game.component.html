@@ -1,0 +1,16 @@
+<div>
+<mat-form-field>
+  <mat-label>Search game</mat-label>
+  <input
+    matInput
+    type="text"
+    [formControl]="inputControl"
+    [matAutocomplete]="auto"
+  />
+ <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+    <mat-option *ngFor="let data of (filteredData | async)" [value]="data.title">
+    {{ data.title }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+</div>

@@ -1,0 +1,10 @@
+.dashboard_page {
+  &__actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+
+    &_action {
+    }
+  }
+}

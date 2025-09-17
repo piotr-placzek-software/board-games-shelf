@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Game overview</h2>
+<mat-dialog-content class="game_details_dialog">
+  <div class="game_details_dialog__content">
+    <section class="game_details_dialog__content__thumbnail_preview">
+      <img *ngIf='data.gameDetails.thumbnailUrl' [src]="data.gameDetails.thumbnailUrl" />
+      <img *ngIf='!data.gameDetails.thumbnailUrl' src="assets/thumbnail-placeholder.png" />
+    </section>
+    <section class="game_details_dialog__content__data">
+      <mat-grid-list
+        *ngIf="data.mode === 'VIEW'"
+        cols="2"
+        rowHeight="3:1"
+        class="game_details_dialog__content__data_grid"
+      >
+        <mat-grid-tile class="game_details_dialog__content__data_grid_label">
+          <h3>Title</h3>
+        </mat-grid-tile>
+        <mat-grid-tile class="game_details_dialog__content__data_grid_value">{{
+          data.gameDetails.title
+        }}</mat-grid-tile>
+        <mat-grid-tile class="game_details_dialog__content__data_grid_label">
+          <h3>Last played</h3>
+        </mat-grid-tile>
+        <mat-grid-tile class="game_details_dialog__content__data_grid_value">{{
+          data.gameDetails.lastPlayed? (data.gameDetails.lastPlayed | date: "longDate") : "Never"
+        }}</mat-grid-tile>
+      </mat-grid-list>
+      <app-game-details-form
+        *ngIf="data.mode === 'EDIT'"
+        [initialData]="data.gameDetails"
+      ></app-game-details-form>
+    </section>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    matButton="elevated"
+    (click)="close()"
+  >
+    <mat-icon>close</mat-icon>
+    Close
+  </button>
+  <button *ngFor="let action of data.actions"
+    matButton="elevated"
+    (click)="action.callback()"
+  >
+    <mat-icon>{{action.icon}}</mat-icon>
+    {{action.label}}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+<form [formGroup]="gameDetailsForm">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title" density="compact" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Thumbnail URL</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="thumbnailUrl"
+      density="compact"
+    />
+  </mat-form-field>
+</form>

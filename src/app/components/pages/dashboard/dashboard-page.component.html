@@ -1,0 +1,46 @@
+<div class="dashbard_page">
+  <h2>My games</h2>
+  <section class="dashboard_page__actions">
+    <button
+      matButton="elevated"
+      class="dashboard_page__actions_action"
+      (click)="showRandomGame()"
+    >
+      <mat-icon>casino</mat-icon>
+      Random
+    </button>
+    <button
+      matButton="elevated"
+      class="dashboard_page__actions_action"
+      (click)="openGameDetailsBlankForm()"
+    >
+      <mat-icon>add</mat-icon>
+      Add game
+    </button>
+    <button
+      matButton="elevated"
+      class="dashboard_page__actions_action"
+      (click)="bggCollectionCsvInput.click()"
+    >
+      <mat-icon>upload</mat-icon>
+      Import BGG collection.csv
+    </button>
+  </section>
+  <section class="dashboard_page__data-table">
+    <app-search-game
+      [dataSource]="dataSource"
+      (selected)="gameSelectedBySearchHandler($event)"
+    ></app-search-game>
+    <app-data-table
+      [dataSource]="dataSource"
+      (actionClick)="dataTableActionClickHandler($event)"
+    ></app-data-table>
+  </section>
+</div>
+<input
+  #bggCollectionCsvInput
+  type="file"
+  hidden
+  accept="collection.csv"
+  (change)="bggCollectionFileSelectedHandler($event)"
+/>

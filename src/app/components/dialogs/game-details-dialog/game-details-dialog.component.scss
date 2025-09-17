@@ -1,0 +1,26 @@
+.game_details_dialog {
+  &__content{
+    display: flex;
+    gap: 24px;
+
+    &__thumbnail_preview {
+      img {
+        max-height: 128px;
+        max-width: 128px;
+      }
+    }
+
+    &__data {
+      width: 100%;
+
+      &_grid {
+        &_label, &_value {
+          ::ng-deep .mat-grid-tile-content {
+            justify-content: flex-start !important;
+          }
+        }
+      }
+    }
+  }
+
+}

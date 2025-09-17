@@ -1,0 +1,44 @@
+.app-data-table {
+  .mat-mdc- {
+    &header-cell {
+      border-bottom-width: 3px;
+      color: var(--mat-sys-primary);
+      font-weight: bold;
+    }
+
+    &row {
+      &:hover {
+        background-color: var(--mat-sys-primary-container);
+      }
+    }
+  }
+
+  .mat-column- {
+    &thumbnailUrl {
+      text-align: center;
+      width: 64px;
+      img {
+        margin-top: 0.45em;
+        max-height: 64px;
+        max-width: 64px;
+      }
+    }
+
+    &name {
+      font-weight: bold;
+    }
+
+    &lastPlayed {
+      width: 256px;
+    }
+
+    &actions {
+      width: 128px;
+
+      .actions_container {
+        display: flex;
+        gap: 12px
+      }
+    }
+  }
+}

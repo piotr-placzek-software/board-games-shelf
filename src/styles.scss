@@ -1,0 +1,31 @@
+@use'@angular/material' as mat;
+
+@include mat.theme((
+  color-scheme: light,
+  color: mat.$blue-palette,
+  typography: Roboto sans-serif,
+  density: 0
+));
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+}
+
+body {
+  margin: 0;
+}
+
+.mat-mdc- {
+  &dialog-surface {
+    border-radius: 0 !important;;
+  }
+  &raised-button,
+  &mini-fab {
+    border-radius: 0 !important;
+    box-shadow: var(--mat-fab-small-container-elevation-shadow, var(--mat-sys-level1));
+  }
+}
+
